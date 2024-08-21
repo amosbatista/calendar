@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "KqgGX2lAxSE=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\amos\\dev\\calendario-dotnet-3\\calendar-3\\src\\calendar-3\\calendar-3.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\amos\\.nuget\\packages\\amazon.lambda.annotations\\1.3.0\\amazon.lambda.annotations.1.3.0.nupkg.sha512",
+    "C:\\Users\\amos\\.nuget\\packages\\amazon.lambda.apigatewayevents\\2.7.0\\amazon.lambda.apigatewayevents.2.7.0.nupkg.sha512",
+    "C:\\Users\\amos\\.nuget\\packages\\amazon.lambda.core\\2.2.0\\amazon.lambda.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\amos\\.nuget\\packages\\amazon.lambda.serialization.systemtextjson\\2.4.1\\amazon.lambda.serialization.systemtextjson.2.4.1.nupkg.sha512",
+    "C:\\Users\\amos\\.nuget\\packages\\microsoft.netcore.app.runtime.linux-x64\\8.0.8\\microsoft.netcore.app.runtime.linux-x64.8.0.8.nupkg.sha512",
+    "C:\\Users\\amos\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.linux-x64\\8.0.8\\microsoft.aspnetcore.app.runtime.linux-x64.8.0.8.nupkg.sha512",
+    "C:\\Users\\amos\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\8.0.8\\microsoft.netcore.app.crossgen2.win-x64.8.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}

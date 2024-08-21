@@ -1,0 +1,8 @@
+C:\Users\amos\dev\calendario-dotnet-3\calendar-3\src\calendar-3\bin\Release\net8.0\publish\calendar-3.deps.json
+C:\Users\amos\dev\calendario-dotnet-3\calendar-3\src\calendar-3\bin\Release\net8.0\publish\calendar-3.runtimeconfig.json
+C:\Users\amos\dev\calendario-dotnet-3\calendar-3\src\calendar-3\bin\Release\net8.0\publish\calendar-3.pdb
+C:\Users\amos\dev\calendario-dotnet-3\calendar-3\src\calendar-3\bin\Release\net8.0\publish\Amazon.Lambda.Annotations.dll
+C:\Users\amos\dev\calendario-dotnet-3\calendar-3\src\calendar-3\bin\Release\net8.0\publish\Amazon.Lambda.APIGatewayEvents.dll
+C:\Users\amos\dev\calendario-dotnet-3\calendar-3\src\calendar-3\bin\Release\net8.0\publish\Amazon.Lambda.Core.dll
+C:\Users\amos\dev\calendario-dotnet-3\calendar-3\src\calendar-3\bin\Release\net8.0\publish\Amazon.Lambda.Serialization.SystemTextJson.dll
+C:\Users\amos\dev\calendario-dotnet-3\calendar-3\src\calendar-3\bin\Release\net8.0\publish\calendar-3.dll
