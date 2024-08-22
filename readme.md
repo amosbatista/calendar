@@ -2,6 +2,11 @@
 
 API para devolver feriados
 
+.Escrito em c#
+.Servido em AWs Lambda
+    .Template: AWS Serverless Application. 
+.Dispobibilizado via AWS API Gateway
+
 ## [GET] /calendar
 
 ```
