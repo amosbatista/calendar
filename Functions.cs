@@ -46,22 +46,40 @@ public class Functions
     /// </summary>
     /// <returns>the next holiday, and how much time to come</returns>
     [LambdaFunction()]
-    [HttpApi(LambdaHttpMethod.Get, "/")]
-    public async Task<APIGatewayHttpApiV2ProxyResponse> FunctionHandler(APIGatewayHttpApiV2ProxyRequest request)
+    [HttpApi(LambdaHttpMethod.Get, "/nacionais")]
+    public async Task<APIGatewayHttpApiV2ProxyResponse> National(APIGatewayHttpApiV2ProxyRequest request)
     {
-        CalendarResult result = _calendarService.GetTheNextDateInsideCalendar(NationalList.National);
+        CalendarResultAsDateComming result = _calendarService.GetTheNextDateInsideCalendar(NationalList.National);
 
         return new APIGatewayHttpApiV2ProxyResponse
         {
             StatusCode = (int)HttpStatusCode.OK,
-            Body = JsonSerializer.Serialize(result, CustomSerializer.Default.CalendarResult)
+            Body = JsonSerializer.Serialize(result, CustomSerializer.Default.CalendarResultAsDateComming)
+        };
+    }
+
+    /// <summary>
+    /// Retrieve the next holiday
+    /// </summary>
+    /// <returns>the next holiday, and how much time to come</returns>
+    [LambdaFunction()]
+    [HttpApi(LambdaHttpMethod.Get, "/fases-lua")]
+    public async Task<APIGatewayHttpApiV2ProxyResponse> MoonPhases(APIGatewayHttpApiV2ProxyRequest request)
+    {
+        CalendarResultAsInsidePeriod result = _calendarService.GetTheDayInsidePeriod(MoonList.moon);
+
+        return new APIGatewayHttpApiV2ProxyResponse
+        {
+            StatusCode = (int)HttpStatusCode.OK,
+            Body = JsonSerializer.Serialize(result, CustomSerializer.Default.CalendarResultAsInsidePeriod)
         };
     }
 }
 
 [JsonSerializable(typeof(APIGatewayHttpApiV2ProxyRequest))]
 [JsonSerializable(typeof(APIGatewayHttpApiV2ProxyResponse))]
-[JsonSerializable(typeof(CalendarResult))]
+[JsonSerializable(typeof(CalendarResultAsDateComming))]
+[JsonSerializable(typeof(CalendarResultAsInsidePeriod))]
 public partial class CustomSerializer : JsonSerializerContext
 {
     

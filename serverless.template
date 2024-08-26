@@ -3,7 +3,7 @@
   "Transform": "AWS::Serverless-2016-10-31",
   "Description": "An AWS Serverless Application. This template is partially managed by Amazon.Lambda.Annotations (v1.3.0.0).",
   "Resources": {
-    "calendar3FunctionsFunctionHandlerGenerated": {
+    "calendar3FunctionsNationalGenerated": {
       "Type": "AWS::Serverless::Function",
       "Metadata": {
         "Tool": "Amazon.Lambda.Annotations",
@@ -20,12 +20,41 @@
           "AWSLambdaBasicExecutionRole"
         ],
         "PackageType": "Zip",
-        "Handler": "calendar-3::calendar_3.Functions_FunctionHandler_Generated::FunctionHandler",
+        "Handler": "calendar-3::calendar_3.Functions_National_Generated::National",
         "Events": {
           "RootGet": {
             "Type": "HttpApi",
             "Properties": {
-              "Path": "/",
+              "Path": "/nacionais",
+              "Method": "GET"
+            }
+          }
+        }
+      }
+    },
+    "calendar3FunctionsMoonPhasesGenerated": {
+      "Type": "AWS::Serverless::Function",
+      "Metadata": {
+        "Tool": "Amazon.Lambda.Annotations",
+        "SyncedEvents": [
+          "RootGet"
+        ]
+      },
+      "Properties": {
+        "Runtime": "dotnet8",
+        "CodeUri": ".",
+        "MemorySize": 512,
+        "Timeout": 30,
+        "Policies": [
+          "AWSLambdaBasicExecutionRole"
+        ],
+        "PackageType": "Zip",
+        "Handler": "calendar-3::calendar_3.Functions_MoonPhases_Generated::MoonPhases",
+        "Events": {
+          "RootGet": {
+            "Type": "HttpApi",
+            "Properties": {
+              "Path": "/fases-lua",
               "Method": "GET"
             }
           }

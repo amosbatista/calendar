@@ -83,17 +83,9 @@ public class DateService: IDateService
         return hoursPlusEntireMonth == 0 ? hours / HoursInAMonth : ((hours - hoursPlusEntireMonth) / HoursInAMonth) + 1;
     }
 
-    public CalendarResult ParseCalendarObject(CalendarItem calendarItem)
-    {
-        return new CalendarResult
-        {
-            Item = calendarItem,
-            Remaining = GetRemainingPeriod(GetHoursRemainingToToday(calendarItem.Date))
-        };
-    }
-    public CalendarResult GetTheNextDateInsideCalendar(List<CalendarItem> calendar)
-    {
-      calendar.Sort((CalendarItem itemA, CalendarItem itemB) =>
+    private List<CalendarItem> SortCalendarByMostNextToday(List<CalendarItem> calendar) {
+        
+        calendar.Sort((CalendarItem itemA, CalendarItem itemB) =>
         {
           // Obtém a diferença de horas entre hoje e a data do item
           int itemADiff = GetHoursRemainingToToday(itemA.Date);
@@ -109,9 +101,47 @@ public class DateService: IDateService
           // Ordena do menor para o maior
           return itemADiff.CompareTo(itemBDiff);
         });
-      var firstItem = 0;
 
-      return ParseCalendarObject(calendar[firstItem]);
+        return calendar;
+    }
+
+    private CalendarResultAsDateComming ParseCalendarObject(CalendarItem calendarItem, CalendarItem today)
+    {
+      var isThisDateToday = Math.Abs(GetHoursRemainingToToday(today.Date)) < HoursInADay;
+
+      return new CalendarResultAsDateComming
+      {
+          Item = calendarItem,
+          Remaining = GetRemainingPeriod(GetHoursRemainingToToday(calendarItem.Date)),
+          Today = isThisDateToday ? today : null
+      };
+    }
+    public CalendarResultAsDateComming GetTheNextDateInsideCalendar(List<CalendarItem> calendar)
+    {
+      var sorted = SortCalendarByMostNextToday(calendar);
+      var nextDate = 0;
+      var lastDate = sorted.Count - 1;
+
+      return ParseCalendarObject(
+        sorted[nextDate],
+        sorted[lastDate]
+      );
+    }
+
+    public CalendarResultAsInsidePeriod GetTheDayInsidePeriod(List<CalendarItem> calendar)
+    {
+      var sorted = SortCalendarByMostNextToday(calendar);
+      var currentDay = sorted.Count - 1;
+      var nextDay = 0;
+     
+      return new CalendarResultAsInsidePeriod
+      {
+        Item = new CalendarPeriodItem {
+          DateFrom = sorted[currentDay].Date,
+          DateTo = sorted[nextDay].Date,
+          Description = sorted[currentDay].Description,
+        }
+      };
     }
   }
 
@@ -130,16 +160,35 @@ public class RemainingPeriod
 
 }
 
-public class CalendarResult
+public class CalendarResultAsDateComming
 {
     public CalendarItem Item { get; set; }
     public RemainingPeriod Remaining { get; set; }
+    public CalendarItem? Today { get; set; }
 
+}
+
+public class CalendarResultAsInsidePeriod
+{
+    public CalendarPeriodItem Item { get; set; }
+}
+
+public class CalendarResultAsToday
+{
+    public CalendarItem Item { get; set; }
 }
 
 public class CalendarItem
 {
   public string Date { get; set; }
+  public string Description { get; set; }
+  
+}
+
+public class CalendarPeriodItem
+{
+  public string DateFrom { get; set; }
+  public string DateTo { get; set; }
   public string Description { get; set; }
   
 }

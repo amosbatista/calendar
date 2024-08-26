@@ -3,8 +3,7 @@ public interface IDateService {
   public int GetHoursRemainingToToday(string date);
   public DateTime GetToday();
   public RemainingPeriod GetRemainingPeriod(int period);
-  public CalendarResult ParseCalendarObject(CalendarItem calendarItem);
-  public CalendarResult GetTheNextDateInsideCalendar(List<CalendarItem> calendar);
-
+  public CalendarResultAsDateComming GetTheNextDateInsideCalendar(List<CalendarItem> calendar);
+  public CalendarResultAsInsidePeriod GetTheDayInsidePeriod(List<CalendarItem> calendar);
 
 }
